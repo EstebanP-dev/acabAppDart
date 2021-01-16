@@ -36,7 +36,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
               alignment: Alignment.topCenter,
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/images/appstore.png'),
-                maxRadius: 150.0,
+                maxRadius: 130.0,
                 minRadius: 50.0,
               ),
             ),

@@ -40,17 +40,29 @@ class DataListState extends State<DataList> {
       appBar: AppBar(
         title: Text(
           title.toUpperCase(),
-            style: GoogleFonts.kanit()
+            style: GoogleFonts.kanit(
+              fontSize: 17
+            )
         ),
+        toolbarHeight: 40,
       ),
       body: getDataListView(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.pink,
-        onPressed: () {
-          navigationToDetail(Data('', 1, '', ''), 'Agregar Dato');
-        },
-        child: Icon(Icons.add),
-      )
+      floatingActionButton:Container(
+        height: 40.0,
+        width: 40.0,
+        child: FittedBox(
+          child: FloatingActionButton(
+            backgroundColor: Colors.pink,
+            onPressed: () {
+              navigationToDetail(Data('', 1, '', ''), 'Agregar Dato');
+            },
+          child: Icon(
+            Icons.add,
+            size: 20,
+        )
+          ),
+        ),
+      ),
     );
   }
 

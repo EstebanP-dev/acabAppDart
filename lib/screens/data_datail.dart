@@ -58,7 +58,7 @@ class DataListState extends State<DataDetail> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = Theme.of(context).textTheme.subtitle1;
+    TextStyle textStyle = Theme.of(context).textTheme.bodyText2;
 
 
 
@@ -75,199 +75,206 @@ class DataListState extends State<DataDetail> {
       appBar: AppBar(
         title: Text(
           appBarTitle.toUpperCase(),
-          style: GoogleFonts.kanit()
+          style: GoogleFonts.kanit(
+            fontSize: 17
+          )
         ),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(
               Icons.keyboard_arrow_left,
-            size: 35.0,
+            size: 25.0,
           ),
           onPressed: () {
             moveToLastScreen();
           },
         ),
+        toolbarHeight: 40,
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+        padding: EdgeInsets.only(top: 8.0, left: 10.0, right: 10.0),
         child: Form(
           key: _formKey,
           child: Container(
             child: Column(
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(top: 50.0, bottom: 50.0),
-                  child: Text(
-                    'ACABAPP',
-                    style: GoogleFonts.bigShouldersText(
-                        textStyle: Theme.of(context).textTheme.headline4,
-                        fontSize: 48,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.blueAccent
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-
-                //First element
-                Padding(
-                  padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-                  child: TextFormField(
-                    validator: (value) {
-                      if(value.isEmpty){
-                        return "Ingresa un valor en Apartamento";
-                      } else {
-                        return null;
-                      }
-                    },
-                    controller: aptoController,
-                    style: textStyle,
-                    onChanged: (value) {
-                      debugPrint('Apto');
-                      updateApto();
-                    },
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.apartment_rounded,
-                          color: Colors.blueAccent,
-                        ),
-                        labelText: 'Apartamento',
-                        labelStyle: textStyle,
-                        helperText: 'Ingrese el apartamento',
-                        counterText: '20 caracteres',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)
-                        )
-                    ),
-                  ),
-                ),
-                //Second Element
-                Padding(
-                  padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-                  child: TextFormField(
-                    validator: (value) {
-                      if(value.isEmpty){
-                        return "Ingresa un valor en Actividad";
-                      } else {
-                        return null;
-                      }
-                    },
-                    controller: activityController,
-                    style: textStyle,
-                    onChanged: (value) {
-                      debugPrint('Activity');
-                      updateActivity();
-                    },
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.assessment,
-                          color: Colors.blueAccent,
-                        ),
-                        labelText: 'Actividad',
-                        labelStyle: textStyle,
-                        helperText: 'Ingrese la actividad',
-                        counterText: '255 caracteres',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)
-                        )
-                    ),
-                  ),
-                ),
-                //Third Element
-                Padding(
-                  padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-                  child: TextFormField(
-                    validator: (value) {
-                      if(value.isEmpty){
-                        return "Ingresa un valor en Avance";
-                      } else {
-                        return null;
-                      }
-                    },
-                    controller: progressController,
-                    style: textStyle,
-                    keyboardType: TextInputType.number,
-                    onChanged: (value) {
-                      debugPrint('Progress');
-                      updateProgress();
-                    },
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.access_time,
-                          color: Colors.blueAccent,
-                        ),
-                        labelText: 'Avance',
-                        labelStyle: textStyle,
-                        helperText: 'Ingrese el avance sin (%)',
-                        counterText: 'De 1 a 100 %',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)
-                        )
-                    ),
-                  ),
-                ),
-                //Fourth Element
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Row(
+                SingleChildScrollView(
+                  child: Column(
                     children: <Widget>[
                       Container(
-                        width: 170.0,
-                        child: RaisedButton(
-                          color: Colors.pink,
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0)
+                        padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: Text(
+                          'ACABAPP',
+                          style: GoogleFonts.bigShouldersText(
+                              textStyle: Theme.of(context).textTheme.headline4,
+                              fontSize: 40,
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.blueAccent
                           ),
-                          padding: EdgeInsets.only(
-                              top: 10.0,
-                              bottom: 10.0,
-                              right: 1.0,
-                              left: 1.0
-                          ),
-                          child: Text(
-                            'GUARDAR',
-                            textScaleFactor: 1.2,
-                            style: GoogleFonts.kanit(),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              debugPrint('Save button pressed');
-                              _save();
-                            });
-                            _submitForm();
-                          },
+                          textAlign: TextAlign.center,
                         ),
                       ),
 
-                      Spacer(),
-
-                      Container(
-                        width: 170.0,
-                        child: RaisedButton(
-                          color: Colors.pink,
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0)
-                          ),
-                          padding: EdgeInsets.only(
-                              top: 10.0,
-                              bottom: 10.0,
-                              right: 1.0,
-                              left: 1.0
-                          ),
-                          child: Text(
-                            'BORRAR',
-                            textScaleFactor: 1.2,
-                            style: GoogleFonts.kanit(),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              debugPrint('Delete button pressed');
-                              _delete();
-                            });
+                      //First element
+                      Padding(
+                        padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: TextFormField(
+                          validator: (value) {
+                            if(value.isEmpty){
+                              return "Ingresa un valor en Apartamento";
+                            } else {
+                              return null;
+                            }
                           },
+                          controller: aptoController,
+                          style: textStyle,
+                          onChanged: (value) {
+                            debugPrint('Apto');
+                            updateApto();
+                          },
+                          decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.apartment_rounded,
+                                color: Colors.blueAccent,
+                              ),
+                              labelText: 'Apartamento',
+                              labelStyle: textStyle,
+                              helperText: 'Ingrese el apartamento',
+                              counterText: '20 caracteres',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0)
+                              )
+                          ),
+                        ),
+                      ),
+                      //Second Element
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                        child: TextFormField(
+                          validator: (value) {
+                            if(value.isEmpty){
+                              return "Ingresa un valor en Actividad";
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: activityController,
+                          style: textStyle,
+                          onChanged: (value) {
+                            debugPrint('Activity');
+                            updateActivity();
+                          },
+                          decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.assessment,
+                                color: Colors.blueAccent,
+                              ),
+                              labelText: 'Actividad',
+                              labelStyle: textStyle,
+                              helperText: 'Ingrese la actividad',
+                              counterText: '255 caracteres',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0)
+                              )
+                          ),
+                        ),
+                      ),
+                      //Third Element
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                        child: TextFormField(
+                          validator: (value) {
+                            if(value.isEmpty){
+                              return "Ingresa un valor en Avance";
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: progressController,
+                          style: textStyle,
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) {
+                            debugPrint('Progress');
+                            updateProgress();
+                          },
+                          decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.access_time,
+                                color: Colors.blueAccent,
+                              ),
+                              labelText: 'Avance',
+                              labelStyle: textStyle,
+                              helperText: 'Ingrese el avance sin (%)',
+                              counterText: 'De 1 a 100 %',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0)
+                              )
+                          ),
+                        ),
+                      ),
+                      //Fourth Element
+                      Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              width: 140.0,
+                              child: RaisedButton(
+                                color: Colors.pink,
+                                textColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0)
+                                ),
+                                padding: EdgeInsets.only(
+                                  top: 10.0,
+                                  bottom: 10.0,
+                                ),
+                                child: Text(
+                                  'GUARDAR',
+                                  textScaleFactor: 1.0,
+                                  style: GoogleFonts.kanit(),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    debugPrint('Save button pressed');
+                                    _save();
+                                  });
+                                  _submitForm();
+                                },
+                              ),
+                            ),
+
+                            Spacer(),
+
+                            Container(
+                              width: 140.0,
+                              child: RaisedButton(
+                                color: Colors.pink,
+                                textColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0)
+                                ),
+                                padding: EdgeInsets.only(
+                                    top: 10.0,
+                                    bottom: 10.0,
+                                    right: 1.0,
+                                    left: 1.0
+                                ),
+                                child: Text(
+                                  'BORRAR',
+                                  textScaleFactor: 1.0,
+                                  style: GoogleFonts.kanit(),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    debugPrint('Delete button pressed');
+                                    _delete();
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -284,7 +291,7 @@ class DataListState extends State<DataDetail> {
                     ),
                     child: Text(
                         "Desarrollado por Esteban Navia P. | Version 1.0",
-                        textScaleFactor: 1.1,
+                        textScaleFactor: 1.0,
                         style: GoogleFonts.kanit(
                           color: Colors.white
                         )
