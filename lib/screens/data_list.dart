@@ -55,10 +55,6 @@ class DataListState extends State<DataList> {
   }
 
   ListView getDataListView() {
-    TextStyle titleStyle = Theme
-        .of(context)
-        .textTheme
-        .headline6;
     return ListView.builder(
       itemCount: count,
       itemBuilder: (BuildContext context, int position) {
