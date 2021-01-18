@@ -4,7 +4,7 @@ import 'dart:convert' as convert;
 
 class FormController {
   final void Function(String) callback;
-  static const String URL = "https://script.google.com/macros/s/AKfycbz0SXhAQqwQpHugm2sLgSbzF7HCyFMhv1JlI1UUTGyXE9Vc7sQO/exec";
+  static const String URL = "https://script.google.com/macros/s/AKfycbxXz1VBzSo9sTrGCMglfTwAR6v2oMXYJMR5HyTS3FFjxMDyBXw/exec";
   static const STATUS_SUCCESS = "Success";
   FormController(this.callback);
   Future sumitForm(ExcelForm excelForm) async {
